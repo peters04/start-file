@@ -3,9 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Songs</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
+  <!-- Header -->
+  <header class="l-header">
+    <h1 class="c-claim">The Best Songs</h1>
+  </header>
+
+  <!-- Main -->
+  <main class="l-main">
+    <article class="l-cards">
+      <div class="c-card">
+        <div class="c-card__overlayer">
+          <section class="c-card__content">
+            <h3 class="c-card__song-title">40:1</h3>
+            <h4 class="c-card__artist">Sabaton</h4>
+          </section>
+        </div>
+        <img src="img/art-of-war.jpg" alt="40:1 Sabaton" class="c-card__album-cover">
+      </div>
+      <div class="c-card">
+        <div class="c-card__overlayer">
+          <section class="c-card__content">
+            <h3 class="c-card__song-title">The Day That Never Comes</h3>
+            <h4 class="c-card__artist">Metallica</h4>
+          </section>
+        </div>
+        <img src="img/death-magnetic.jpg" alt="The Day That Never Comes Metallica" class="c-card__album-cover">
+      </div>
+      <div class="c-card">
+        <div class="c-card__overlayer">
+          <section class="c-card__content">
+            <h3 class="c-card__song-title">All Out Life</h3>
+            <h4 class="c-card__artist">Slipknot</h4>
+          </section>
+        </div>
+        <img src="img/we-are-not-your-kind.jpg" alt="All Out Life Slipknot" class="c-card__album-cover">
+      </div>
+      <div class="c-card">
+        <div class="c-card__overlayer">
+          <section class="c-card__content">
+            <h3 class="c-card__song-title">Northern Downpour</h3>
+            <h4 class="c-card__artist">Panic! At The Disco</h4>
+          </section>
+        </div>
+        <img src="img/pretty-odd.jpg" alt="P!ATD" class="c-card__album-cover">
+      </div>
+      <div class="c-card">
+        <div class="c-card__overlayer">
+          <section class="c-card__content">
+            <h3 class="c-card__song-title">Polly</h3>
+            <h4 class="c-card__artist">Nirvana</h4>
+          </section>
+        </div>
+        <img src="img/nevermind.jpg" alt="Polly Nirvana" class="c-card__album-cover">
+      </div>
+      <div class="c-card">
+        <div class="c-card__overlayer">
+          <section class="c-card__content">
+            <h3 class="c-card__song-title">Wasting My Hate</h3>
+            <h4 class="c-card__artist">Metallica</h4>
+          </section>
+        </div>
+        <img src="img/load.jpg" alt="Wasting My Hate Metallica" class="c-card__album-cover">
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="l-footer">
+    <section class="c-footer">
+      <p class="c-footer__p">The Best Songs &copy All Rights Reserved </p>
+    </section>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+  <script>
+  const colorThief = new ColorThief();
+  const img = document.querySelectorAll('.c-card__album-cover');
+  const overlayer = document.querySelectorAll('.c-card__overlayer');
+
+  img.forEach((el, index) => {
+    let color = 0;
+    if (el.complete) {
+      color = colorThief.getColor(el);
+    }
+    else {
+      el.addEventListener('load', () => {
+        color = colorThief.getColor(el);
+      })
+    }
+
+    const yiq = ((color[0]*299)+(color[1]*587)+(color[2]*114))/1000;
+    overlayer[index].style.color = yiq >= 128 ? 'black' : 'white';
+
+    overlayer[index].style.background = `rgb(${color.join(', ')})`;
+  });
+  </script>
 </body>
 </html>

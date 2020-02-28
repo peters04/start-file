@@ -1,0 +1,24 @@
+// Settings
+@import 'font';
+$primary: #1b262c;
+$white: #fff;
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  font-family: $default-font;
+  color: $primary;
+  margin: 0;
+  padding: 0;
+}
+
+// Layout
+@import 'layout';
+// Components
+@import 'components/Card';
+@import 'components/Header';
+@import 'components/Footer';

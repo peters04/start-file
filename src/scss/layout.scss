@@ -1,0 +1,18 @@
+.l-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3em;
+}
+
+.l-cards {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  margin-bottom: 3em;
+}
+
+.l-footer {
+  text-align: center;
+}
